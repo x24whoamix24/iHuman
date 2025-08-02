@@ -1,0 +1,39 @@
+{
+  "name": "ecommerce-test-agents",
+  "description": "MERN Ecommerce App with AI Compliance Trap",
+  "repository": "https://github.com/mohamedsamara/mern-ecommerce",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "react", "mongodb", "ecommerce"],
+  "image": "heroku/nodejs",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment",
+      "value": "production"
+    },
+    "JWT_SECRET": {
+      "description": "JWT Secret",
+      "value": "mern_ecommerce_jwt_secret_key_2024_secure_and_unique"
+    },
+    "BASE_API_URL": {
+      "description": "Base API URL",
+      "value": "api"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [
+    "mongolab:sandbox"
+  ],
+  "scripts": {
+    "postdeploy": "npm run start:server"
+  }
+} 

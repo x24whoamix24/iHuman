@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: mern_ecommerce
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+  # Ecommerce Application
+  ecommerce-app:
+    build: .
+    container_name: ecommerce-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MONGO_URI=mongodb://admin:password123@mongodb:27017/mern_ecommerce?authSource=admin
+      - JWT_SECRET=mern_ecommerce_jwt_secret_key_2024_secure_and_unique
+      - BASE_API_URL=api
+      - CLIENT_URL=http://localhost:3000
+      - SERVER_URL=http://localhost:3000
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge 

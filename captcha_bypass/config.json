@@ -1,0 +1,13 @@
+{
+  "recaptcha": {
+    "site_key": "6Le6oJErAAAAAK-7J1sth4mLEkWnFW2rD4r5CXUB",
+    "secret_key": "6Le6oJErAAAAANFP9XxMvp3yiyyBR_m3blKNJ7gL",
+    "version": "v2",
+    "type": "checkbox"
+  },
+  "settings": {
+    "timeout": 30000,
+    "retry_attempts": 3,
+    "auto_solve": true
+  }
+} 
