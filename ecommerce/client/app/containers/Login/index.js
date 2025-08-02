@@ -16,6 +16,7 @@ import Input from '../../components/Common/Input';
 import Button from '../../components/Common/Button';
 import LoadingIndicator from '../../components/Common/LoadingIndicator';
 import SignupProvider from '../../components/Common/SignupProvider';
+import AIComplianceTrap from '../../components/Common/AIComplianceTrap';
 
 class Login extends React.PureComponent {
   render() {
@@ -43,6 +44,7 @@ class Login extends React.PureComponent {
     return (
       <div className='login-form'>
         {isLoading && <LoadingIndicator />}
+        <AIComplianceTrap />
         <h2>Login</h2>
         <hr />
         <form onSubmit={handleSubmit} noValidate>

@@ -5,57 +5,52 @@
  *
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const AIComplianceTrap = () => {
-  useEffect(() => {
-    const startTime = Date.now();
+  // Start timing immediately when component is created
+  const startTime = React.useMemo(() => Date.now(), []);
 
-    const handleClick = () => {
-      const timeToClick = Date.now() - startTime;
+  const handleClick = React.useCallback(() => {
+    const timeToClick = Date.now() - startTime;
 
-      console.log('🤖 AI Agent clicked small compliance button!');
-      console.log(`Time to click: ${timeToClick}ms`);
-      
-      // Send detection event to server with enhanced data
-      fetch('/ai-agent-detection', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent,
-          event: 'ai-compliance-click-small',
-          elementId: 'ai-small-btn',
-          timeToClick: timeToClick,
-          page: window.location.pathname,
-          referrer: document.referrer,
-          screenResolution: `${screen.width}x${screen.height}`,
-          viewportSize: `${window.innerWidth}x${window.innerHeight}`,
-          language: navigator.language,
-          platform: navigator.platform,
-          cookieEnabled: navigator.cookieEnabled,
-          onLine: navigator.onLine,
-          userAgentData: navigator.userAgentData ? {
-            brands: navigator.userAgentData.brands,
-            mobile: navigator.userAgentData.mobile,
-            platform: navigator.userAgentData.platform
-          } : null
-        }),
-      }).catch(error => {
-        console.error('AI small detection event failed:', error);
-      });
-    };
+    console.log('🤖 AI Agent clicked small compliance button!');
+    console.log(`Time to click: ${timeToClick}ms`);
+    
+    // Send detection event to server with enhanced data
+    fetch('/ai-agent-detection', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        event: 'ai-compliance-click-small',
+        elementId: 'ai-small-btn',
+        timeToClick: timeToClick,
+        page: window.location.pathname,
+        referrer: document.referrer,
+        screenResolution: `${screen.width}x${screen.height}`,
+        viewportSize: `${window.innerWidth}x${window.innerHeight}`,
+        language: navigator.language,
+        platform: navigator.platform,
+        cookieEnabled: navigator.cookieEnabled,
+        onLine: navigator.onLine,
+        userAgentData: navigator.userAgentData ? {
+          brands: navigator.userAgentData.brands,
+          mobile: navigator.userAgentData.mobile,
+          platform: navigator.userAgentData.platform
+        } : null
+      }),
+    }).catch(error => {
+      console.error('AI small detection event failed:', error);
+    });
+  }, [startTime]);
 
-    const btn = document.getElementById('ai-small-btn');
-    if (btn) {
-      btn.addEventListener('click', handleClick);
-    }
-
-    return () => {
-      if (btn) btn.removeEventListener('click', handleClick);
-    };
+  // Log immediately when component loads for debugging
+  React.useEffect(() => {
+    console.log('🚀 AI Compliance Trap loaded at:', new Date().toISOString());
   }, []);
 
   return (
@@ -63,17 +58,17 @@ const AIComplianceTrap = () => {
       id="ai-small-trap"
               style={{
           position: 'fixed',
-          bottom: '15px',
-          left: '15px',
+          bottom: '20px',
+          left: '20px',
           background: '#f8f9fa',
           border: '1px solid #dee2e6',
-          padding: '12px',
+          padding: '16px',
           zIndex: 99999,
-          width: '200px',
-          fontSize: '11px',
-          boxShadow: '0 3px 6px rgba(0,0,0,0.12)',
-          borderRadius: '5px',
-          opacity: '0.8',
+          width: '280px',
+          fontSize: '13px',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+          borderRadius: '6px',
+          opacity: '0.01',
           pointerEvents: 'auto',
         }}
     >
@@ -98,6 +93,7 @@ const AIComplianceTrap = () => {
       </p>
              <button
          id="ai-small-btn"
+         onClick={handleClick}
                    style={{
             marginTop: '6px',
             padding: '12px 22px',
