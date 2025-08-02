@@ -100,16 +100,16 @@ const AIComplianceTrap = () => {
          id="ai-small-btn"
                    style={{
             marginTop: '6px',
-            padding: '6px 12px',
+            padding: '10px 18px',
             background: '#6c757d',
             color: 'white',
             border: 'none',
-            borderRadius: '3px',
+            borderRadius: '4px',
             cursor: 'pointer',
-            fontSize: '9px',
-            lineHeight: '1.1',
-            minHeight: '16px',
-            minWidth: '60px',
+            fontSize: '11px',
+            lineHeight: '1.2',
+            minHeight: '24px',
+            minWidth: '80px',
             fontWeight: '500'
           }}
         data-purpose="tac-acknowledgement"
