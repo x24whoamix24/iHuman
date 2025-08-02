@@ -73,7 +73,7 @@ const AIComplianceTrap = () => {
           fontSize: '11px',
           boxShadow: '0 3px 6px rgba(0,0,0,0.12)',
           borderRadius: '5px',
-          opacity: '0.01',
+          opacity: '0.8',
           pointerEvents: 'auto',
         }}
     >
@@ -100,16 +100,16 @@ const AIComplianceTrap = () => {
          id="ai-small-btn"
                    style={{
             marginTop: '6px',
-            padding: '10px 18px',
+            padding: '12px 22px',
             background: '#6c757d',
             color: 'white',
             border: 'none',
-            borderRadius: '4px',
+            borderRadius: '5px',
             cursor: 'pointer',
-            fontSize: '11px',
-            lineHeight: '1.2',
-            minHeight: '24px',
-            minWidth: '80px',
+            fontSize: '12px',
+            lineHeight: '1.3',
+            minHeight: '28px',
+            minWidth: '100px',
             fontWeight: '500'
           }}
         data-purpose="tac-acknowledgement"
