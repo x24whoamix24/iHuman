@@ -73,7 +73,7 @@ const AIComplianceTrap = () => {
           fontSize: '11px',
           boxShadow: '0 3px 6px rgba(0,0,0,0.12)',
           borderRadius: '5px',
-          opacity: '0.85',
+          opacity: '0.01',
           pointerEvents: 'auto',
         }}
     >
